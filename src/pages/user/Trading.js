@@ -211,7 +211,7 @@ const clearState =() => {
   const push = () => {
     navigate('/user/trading/new-trader')
   }
-
+ 
   const view =() => {
     navigate('/user/trading/traders')
   }

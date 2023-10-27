@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable consistent-return */
 // firebase
 import { getAuth } from 'firebase/auth';
@@ -217,43 +218,49 @@ export function getAllTrader() {
   }
 
 
-export function createTrader(options, setLoading, setOpen) {
+export function createSoftware(options, setLoading, setOpen) {
+  
   return async () => {
     dispatch(slice.actions.startLoading());
     setLoading(true)
-    const { name, losses, wins,url } = options;
-    const winings = Number(wins)
-    const allosses = Number(losses)
     const uuid = uuidv4();
-    const traderId = uuid;
-    const total = allosses + winings
-    const  winRate = winings/total * 100
-    const  lossRate = 100 - winRate
-    
     try {
-      await setDoc(doc(DB, 'traders', `${traderId}`), {
-        id: traderId,
-        imageUrl : url,
-        name,
-        losses,
-        wins,
-        winRate : `${winRate.toFixed(2)}%`,
-        lossRate : `${lossRate.toFixed(2)}%`,
-        subscribers : [],
+      await setDoc(doc(DB, 'softwares', `${uuid}`), {
+        id: uuid,
+        ...options,
+        secretKey : generateRandomSecretKey(17),
+        apiKey : generateRandomSecretKey(19)
       }).then(() => {
-        console.log('trader created')
+        
         setLoading(false);
         setOpen(true)
       });
     } catch (error) {
       const errorMessage = error.message;
+      console.log(error)
       dispatch(slice.actions.hasError(errorMessage));
     }
-    return traderId;
+    return uuid;
   };
 }
+
+
 export function clearState() {
   return async () => {
     dispatch(slice.actions.resetState());
   };
 }
+
+
+function generateRandomSecretKey(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let secretKey = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    secretKey += characters.charAt(randomIndex);
+  }
+
+  return secretKey;
+}
+

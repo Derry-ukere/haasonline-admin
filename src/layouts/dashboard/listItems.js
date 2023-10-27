@@ -3,9 +3,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
@@ -31,23 +29,11 @@ export const MainListItems = () => {
         </ListItemIcon>
         <ListItemText primary="Deposits" sx={{ color: 'black' }} />
       </ListItemButton>
-      <ListItemButton onClick={() => handleCLick('settings')}>
-        <ListItemIcon>
-          <PeopleIcon />
-        </ListItemIcon>
-        <ListItemText primary="Settings" sx={{ color: 'black' }} />
-      </ListItemButton>
-      <ListItemButton onClick={() => handleCLick('trading')}>
+      <ListItemButton onClick={() => handleCLick('softwares')}>
         <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>
-        <ListItemText primary="Trading" sx={{ color: 'black' }} />
-      </ListItemButton>
-      <ListItemButton onClick={() => handleCLick('withdrawals')}>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Withdrawals" sx={{ color: 'black' }} />
+        <ListItemText primary="Softwares" sx={{ color: 'black' }} />
       </ListItemButton>
       <ListItemButton onClick={() => logout()}>
         <ListItemIcon>
