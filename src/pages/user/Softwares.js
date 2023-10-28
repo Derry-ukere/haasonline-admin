@@ -4,28 +4,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
-
-import BasicTable from '../../components/basic-table/DepositTable';
-
-
+import BasicTable from '../../components/basic-table/SoftwareTable';
 
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
-import {getPendingDeposit } from '../../redux/slices/deposits/get-deposits';
+import {getAllSoftwares } from '../../redux/slices/softwares/getAllSoftwares';
 
 const FundAccount = () => {
   const navigate = useNavigate();
   
   const dispatch = useDispatch();
-  const {  deposits,isLoading, error } = useSelector((state) => state.deposits);
+  const {  allUserSoftwares,isLoading, error } = useSelector((state) => state.allSoftwares);
  
   React.useEffect(() => {
-    dispatch(getPendingDeposit());
+    dispatch(getAllSoftwares());
   },[])
 
-  // const fetchApprovedDeposits = () => dispatch(getApprovedDeposit())
-  // const fetchPending = () => dispatch(getPendingDeposit())
-  // const fetchDeclinedDeposits = () => dispatch(getDeclinedDeposit())
+
 
   const push = () => {
     navigate('/user/software/new-software')
@@ -34,17 +29,17 @@ const FundAccount = () => {
   const headers = [
     {
       id : 1,
-      title : "Client Name",
+      title : "Software Name",
       align : "left",
     },
     {
       id : 2,
-      title : "Amount ($)",
+      title : "Client email",
       align : "left",
     },
     {
       id : 3,
-      title : "Amount (crypto)",
+      title : "Client name",
       align : "left",
     },
     {
@@ -54,7 +49,7 @@ const FundAccount = () => {
     },
     {
       id :6,
-      title : "Payment proof",
+      title : "Software cost",
       align : "left"
     },
     {
@@ -67,10 +62,10 @@ const FundAccount = () => {
   const tableConfig = {
     title: 'Purschased Softwares',
     headers,
-    body: deposits,
+    body: allUserSoftwares,
     loading : isLoading,
     error,
-    type : 'deposits'
+    type : 'Deposits'
   }
 
   return (
@@ -80,21 +75,13 @@ const FundAccount = () => {
         <div className="app-relative hero-mixed">
       <div className="overlay1" />
       <div className="fade-appear-done fade-enter-done" style={{ paddingBottom: '6rem', paddingTop: '2rem' }}>
-        <h1 className="center app-relative white-text">Recent Deposits</h1>
+        <h1 className="center app-relative white-text">Recent Software Purschased</h1>
       </div>
     </div>
           <section className="row" style={{padding : 20}}>
           <Button variant='contained' color='success'onClick={push} >
                 Create Software
           </Button>
-          {/* <Stack direction={"row"} justifyContent="space-around">
-              <Button variant='contained' color='success'onClick={fetchApprovedDeposits} >
-                approved deposits
-              </Button>
-              <Button variant='contained' color='warning' onClick={fetchPending}>
-                pending deposits
-              </Button>
-            </Stack> */}
           <BasicTable  tableConfig={tableConfig}/>
           </section>
         </div>

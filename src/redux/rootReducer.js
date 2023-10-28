@@ -18,6 +18,10 @@ import updateDepositStaus from './slices/deposits/update-deposit-status';
 import getAllWithdrawalsData from './slices/withdrawal/get-withdrawal';
 
 
+// softwares
+import allSoftwares from './slices/softwares/getAllSoftwares';
+
+
 
 // ----------------------------------------------------------------------//
 
@@ -44,7 +48,10 @@ const rootReducer = combineReducers({
   updateDepositStaus,
 
   // withdrawals
- allWithdrawals : getAllWithdrawalsData
+ allWithdrawals : getAllWithdrawalsData,
+
+ // softares
+ allSoftwares
 });
 
 export { rootPersistConfig, rootReducer };
