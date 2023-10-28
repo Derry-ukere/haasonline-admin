@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getFirestore,doc,updateDoc,where } from 'firebase/firestore';
+import { getFirestore,doc,updateDoc, } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 import { FIREBASE_API } from '../../../config';
 import { dispatch } from '../../store';
@@ -60,7 +60,7 @@ export  function setSoftwareStatus(options) {
     const {id, actionType} = options;
     dispatch(slice.actions.startLoading());
     try {
-        const depositRef = doc(DB, 'user-softwares');
+        const depositRef = doc(DB, 'user-softwares', `${id}`);
         if(actionType === "decline_deposit"){
             await updateDoc(depositRef, {
                 status: 'pending',
