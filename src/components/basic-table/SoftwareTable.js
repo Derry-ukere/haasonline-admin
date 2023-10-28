@@ -11,7 +11,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 // @mui
 import { Stack, Box, TableRow,CardHeader } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
-import Options from '../table-options/DepositOptions';
+import Options from '../table-options/SoftwareOptions';
 
 import { JobTitleStyle, LabelStyle, TableHeadStyle, TableRowStyle } from './styles';
 import Label from '../Label';

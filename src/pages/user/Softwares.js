@@ -4,10 +4,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
-
 import BasicTable from '../../components/basic-table/SoftwareTable';
-
-
 
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
@@ -24,11 +21,6 @@ const FundAccount = () => {
   },[])
 
 
-  React.useEffect(() => {
-    console.log({
-      allUserSoftwares,isLoading, error
-    })
-  },[allUserSoftwares,isLoading, error])
 
   const push = () => {
     navigate('/user/software/new-software')
