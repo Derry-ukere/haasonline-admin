@@ -9,7 +9,7 @@ import Snackbar from '@mui/material/Snackbar';
 // redux
 import { useDispatch } from '../../redux/store';
 import { uploadProof } from '../../redux/slices/Upload';
-import { createTrader } from '../../redux/slices/trades';
+import { createSoftware } from '../../redux/slices/trades';
 
 
 const UploadProof = () => {
@@ -20,8 +20,13 @@ const UploadProof = () => {
   const [open, setOpen] = React.useState(false);
   const [url, setUrl] = React.useState('');
   const [name, setName] = React.useState('');
-  const [wins, setWins] = React.useState('');
-  const [losses, setLosses] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  const [cost, setCost] = React.useState('');
+  const [version, setVersion] = React.useState('');
+  const [developer, setDeveloper] = React.useState('');
+  const [backtestingResults, setBacktestingResults] = React.useState(''); 
+  const [releaseDate, setReleaseDate] = React.useState('');
+
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -49,12 +54,16 @@ const UploadProof = () => {
     setIsloading(true)
      const options = {
         name,
-        wins,
-        losses,
+        description,
+        cost,
+        version,
+        developer,
+        backtestingResults,
         url
     }
-    dispatch(createTrader(options, setIsloading, setOpen))
-    // setIsloading(false)
+    console.log('options', options)
+    dispatch(createSoftware(options, setIsloading, setOpen))
+    setIsloading(false)
   };
   return (
     <div>
@@ -66,7 +75,7 @@ const UploadProof = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-            Trader Created successly !
+            Software Created successly !
           </Alert>
         </Snackbar>
         <div className="fade-appear-done fade-enter-done">
@@ -97,31 +106,76 @@ const UploadProof = () => {
                             type="text"
                             value = {name}
                             onChange ={(e) =>setName(e.target.value)}
-                            placeholder='Enter traders Name'
+                            placeholder='Enter Software Name'
+                        />
+                    </div>
+                    <div className="input-field">
+                        <textarea 
+                            id="description"
+                            name="description"
+                            required
+                            type="text"
+                            placeholder='Enter a brief Description for the software'
+                            value = {description}
+                            onChange ={(e) =>setDescription(e.target.value)}
                         />
                     </div>
                     <div className="input-field">
                         <input
-                            id="losses"
-                            name="email"
+                            id="cost"
+                            name="cost"
                             required
                             type="number"
-                            placeholder='Wins'
-                            value = {wins}
-                            onChange ={(e) =>setWins(e.target.value)}
+                            placeholder='software cost'
+                            value = {cost}
+                            onChange ={(e) =>setCost(e.target.value)}
                         />
                     </div>
                     <div className="input-field">
                         <input
-                            id="losses"
-                            name="email"
+                            id="version"
+                            name="version"
                             required
-                            type="number"
-                            placeholder='Losses'
-                            value = {losses}
-                            onChange ={(e) =>setLosses(e.target.value)}
+                            type="text"
+                            placeholder='software version'
+                            value = {version}
+                            onChange ={(e) =>setVersion(e.target.value)}
                         />
                     </div>
+                    <div className="input-field">
+                        <input
+                            id="Developer"
+                            name="Developer"
+                            required
+                            type="text"
+                            placeholder='Software Developer'
+                            value = {developer}
+                            onChange ={(e) =>setDeveloper(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field">
+                        <input
+                            id="BacktestingResults"
+                            name="BacktestingResults"
+                            required
+                            type="text"
+                            placeholder='Backtesting Results e.g $8,500 profit in the last 6 months'
+                            value = {backtestingResults}
+                            onChange ={(e) =>setBacktestingResults(e.target.value)}
+                        />
+                    </div>
+                     <div className="input-field">
+                        <input
+                            id="ReleaseDate"
+                            name="ReleaseDate"
+                            required
+                            type="text"
+                            placeholder='Release Date'
+                            value = {releaseDate}
+                            onChange ={(e) =>setReleaseDate(e.target.value)}
+                        />
+                    </div>
+
                     {isLoading ? (
                       <div style={{ marginLeft: 130 }}>
                         <ReactLoading color="#107bea" />
@@ -143,3 +197,8 @@ const UploadProof = () => {
 };
 
 export default UploadProof;
+
+
+
+
+

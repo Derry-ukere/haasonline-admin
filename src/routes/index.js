@@ -54,11 +54,11 @@ export default function Router() {
         { path: 'withdrawals', element: <Withdrawal /> },
         { path: 'trading', element: <Trading /> },
         { path: 'signals', element: <Signals /> },
-        { path: 'trading/new-trader', element: <NewTrader /> },
+        { path: 'software/new-software', element: <NewSoftware /> },
         { path: 'trading/traders', element: <Traders /> },
         { path: 'image/:imageId', element: <ImagePage /> },
         { path: 'settings/create-admin', element: <Signup /> },
-        // { path: 'settings/update-password', element: <UpdatePassword /> },
+        { path: 'softwares', element: <Softwares /> },
         { path: 'admin', element: <Admins /> },
       ],
     },
@@ -77,8 +77,9 @@ const Withdrawal = Loadable(lazy(() => import('../pages/user/Withdrawal')));
 const Trading = Loadable(lazy(() => import('../pages/user/Trading')));
 const Signals = Loadable(lazy(() => import('../pages/user/Signals')));
 const ImagePage = Loadable(lazy(() => import('../pages/user/ImageUrl')));
-const NewTrader = Loadable(lazy(() => import('../pages/user/NewTrader')));
+const NewSoftware = Loadable(lazy(() => import('../pages/user/NewSoftware')));
 const Traders = Loadable(lazy(() => import('../pages/user/Traders'))); 
 const Admins = Loadable(lazy(() => import('../pages/user/Admins')));
-// const UpdatePassword = Loadable(lazy(() => import('../pages/user/user/UpdatePassword')));
+const Softwares = Loadable(lazy(() => import('../pages/user/Softwares')));
+
  
