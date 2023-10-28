@@ -1,6 +1,6 @@
 // firebase
 import { initializeApp } from 'firebase/app';
-import { getFirestore, getDocs,orderBy, collection, query,where } from 'firebase/firestore';
+import { getFirestore, getDocs, collection, query, } from 'firebase/firestore';
 
 import { createSlice } from '@reduxjs/toolkit';
 
