@@ -108,8 +108,8 @@ export default function ConfirmationDialogRaw(props) {
           <Paper elevation={0}>
             <Stack spacing={3} direction="column" alignItems="center" justifyContent="center">
             {error   && <div style={{color : 'red'}}>{error }</div>}
-            {success.approved   && <div style={{color : 'green'}}> deposit approved</div>}
-            {success.declined   && <div style={{color : 'green'}}> deposit declined</div>}
+            {success.approved   && <div style={{color : 'green'}}> software running</div>}
+            {success.declined   && <div style={{color : 'green'}}> software maintenance</div>}
               <Image alt="country" src={'/assets/images/site/ServiceVector2.png'} sx={{ width: 200 }} />
               <Typography>  <DialogTitleTitleStyle>yo !!</DialogTitleTitleStyle> <JobTitleStyle>“Are you sure”?</JobTitleStyle></Typography>
             </Stack>
