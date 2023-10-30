@@ -62,13 +62,13 @@ export default function DepositOptionButton({id}) {
       >
         <MenuItem onClick = {()=>handleOpenModal("decline_deposit")}>
           <Iconify icon={'eva:edit-2-outline'} sx={{ ...ICON }} />
-          unapprove software
+          Maintaince 
         </MenuItem>
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <MenuItem onClick = {()=>handleOpenModal("approve_deposit")}>
           <Iconify icon={'eva:loader-outline'} sx={{ ...ICON }} />
-          Approve software
+          Running
         </MenuItem>
       </MenuPopover>
     </>

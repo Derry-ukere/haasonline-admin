@@ -63,14 +63,14 @@ export  function setSoftwareStatus(options) {
         const depositRef = doc(DB, 'user-softwares', `${id}`);
         if(actionType === "decline_deposit"){
             await updateDoc(depositRef, {
-                status: 'pending',
+                status: 'maintenance',
               });
               dispatch(slice.actions.declineSuccess());
         }
         if(actionType === "approve_deposit"){
           
             await updateDoc(depositRef, {
-                status: 'approved',
+                status: 'running',
               });
               dispatch(slice.actions.approveSuccess());        }
      
